@@ -1,0 +1,168 @@
+---
+const stack = {
+    언어: ["TypeScript", "JavaScript", "Python", "Rust"],
+    프론트엔드: ["React", "Next.js", "Astro", "Tailwind CSS", "Svelte"],
+    백엔드: ["FastAPI", "PostgreSQL", "Redis"],
+    도구: ["Docker", "Git"],
+    AI: ["Claude Code", "Codex", "OpenCode", "CommandCode", "Grok Build"],
+};
+---
+
+<section class="section" id="about">
+    <div class="container">
+        <h2 class="section-title reveal">소개</h2>
+        <div class="grid">
+            <div class="prose reveal">
+                <p>
+                    안녕하세요, Nergis예요. (한국어로 수선화!) 한국에서 활동하는
+                    개발자로, <br /> 주로
+                    <strong>오픈소스 도구</strong>와 <strong>웹 백엔드</strong>,
+                    가끔은 Rust나 C# 쪽 사이드 퀘스트를 하고 있어요.
+                </p>
+                <p>
+                    URL 단축 서비스, 텔레그램 봇, 리눅스 미러 프록시, 설치
+                    도우미 같은 작은 프로젝트들을 만들고 있어요. 대부분 제가
+                    직접 필요해서 만든 거고, 혹시 다른 분들에게도 도움이 될까 봐
+                    공개해요. <strong lang="en"
+                        ><a href="https://krfoss.org">@ROKFOSS</a></strong
+                    >, <strong lang="en">@Xeon-Dot</strong>에서 함께 활동하고
+                    있고, 배운 것들을 틈틈이 기록하고 있어요.
+                </p>
+                <p class="meta">
+                    <span lang="en">📍 South Korea</span>
+                    <span>·</span>
+                    <span lang="en">UTC+9</span>
+                </p>
+            </div>
+            <ul class="facts reveal">
+                <li>
+                    <span class="num">38</span><span class="label"
+                        >깃허브 공개 레포</span
+                    >
+                </li>
+                <li>
+                    <span class="num">4</span><span class="label"
+                        >팔로워 · 9 팔로잉</span
+                    >
+                </li>
+                <li>
+                    <span class="num">∞</span><span class="label"
+                        >남은 호기심</span
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="stack">
+    <div class="container">
+        <h2 class="section-title reveal">주로 쓰는 기술</h2>
+        <div class="stack">
+            {
+                Object.entries(stack).map(([category, items]) => (
+                    <div class="stack-group reveal">
+                        <h3 class="stack-cat">{category}</h3>
+                        <ul class="stack-items">
+                            {items.map((item) => (
+                                <li lang="en">{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
+    .prose p {
+        color: var(--text-muted);
+        margin-bottom: 18px;
+        font-size: 16px;
+    }
+    .prose strong {
+        color: var(--text);
+        font-weight: 500;
+    }
+    .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        color: var(--text-dim);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        margin-top: 24px;
+    }
+    .facts {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 24px;
+        background: var(--bg-elev);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+    }
+    .facts li {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .num {
+        font-family: var(--font-mono);
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--text);
+        letter-spacing: -0.02em;
+    }
+    .label {
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+    .stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+    }
+    .stack-group {
+        background: var(--bg-elev);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px 24px;
+    }
+    .stack-cat {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-dim);
+        font-weight: 500;
+        margin-bottom: 14px;
+    }
+    .stack-items {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .stack-items li {
+        font-size: 13px;
+        padding: 5px 10px;
+        background: var(--bg-elev-2);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--text);
+    }
+    @media (max-width: 720px) {
+        .grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+</style>

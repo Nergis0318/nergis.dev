@@ -1,0 +1,133 @@
+:root {
+    --bg: #0a0a0a;
+    --bg-elev: #111111;
+    --bg-elev-2: #161616;
+    --border: #222222;
+    --border-strong: #2a2a2a;
+    --text: #ededed;
+    --text-muted: #8a8a8a;
+    --text-dim: #5a5a5a;
+    --accent: #ffffff;
+    --accent-soft: #bdbdbd;
+    /* Default body font is Pretendard GOV Variable for Korean (and CJK fallback). */
+    --font-sans:
+        "Pretendard GOV Variable", Pretendard, -apple-system,
+        BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+        "Malgun Gothic", sans-serif;
+    /* Mono = JetBrains Mono for Latin, falls through to Pretendard for CJK. */
+    --font-mono:
+        "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo,
+        monospace, "Pretendard GOV Variable", Pretendard, -apple-system,
+        BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+        "Malgun Gothic", sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --container: 1080px;
+    --transition: 0.2s ease;
+}
+
+/* Anything tagged as English gets the JetBrains Mono treatment.
+   Korean (and other non-en) text stays in the default Pretendard GOV Variable. */
+:lang(en) {
+    font-family: var(--font-mono);
+    font-feature-settings:
+        "liga" 0,
+        "calt" 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition:
+        color var(--transition),
+        opacity var(--transition);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 720px) {
+    .section {
+        padding: 80px 0;
+    }
+    .section-title {
+        margin-bottom: 32px;
+    }
+}

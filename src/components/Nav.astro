@@ -1,0 +1,80 @@
+---
+const links = [
+    { href: "#about", label: "소개" },
+    { href: "#stack", label: "기술" },
+    { href: "#projects", label: "프로젝트" },
+    { href: "#contact", label: "연락처" },
+];
+---
+
+<header class="nav">
+    <div class="container nav-inner">
+        <a href="#top" class="logo" aria-label="Home">
+            <span class="logo-mark" lang="en">◆</span>
+            <span class="logo-text" lang="en">nergis</span>
+        </a>
+        <nav>
+            <ul>
+                {
+                    links.map((l) => (
+                        <li>
+                            <a href={l.href}>{l.label}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        background: rgba(10, 10, 10, 0.7);
+        border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+    }
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .logo-mark {
+        color: var(--text);
+        font-size: 12px;
+    }
+    .logo-text {
+        letter-spacing: 0.04em;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 28px;
+    }
+    nav a {
+        font-size: 14px;
+        color: var(--text-muted);
+    }
+    nav a:hover {
+        color: var(--text);
+    }
+    @media (max-width: 540px) {
+        nav ul {
+            gap: 16px;
+        }
+        nav a {
+            font-size: 12px;
+        }
+    }
+</style>

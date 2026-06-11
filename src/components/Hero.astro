@@ -1,0 +1,158 @@
+---
+const phrases = [
+    "오픈소스 도구를 만들고 있어요.",
+    "한국에서 활동하는 개발자에요.",
+    "배운 것을 공개적으로 기록해요.",
+    "작더라도 꾸준히 배포해요.",
+];
+---
+
+<section class="hero" id="top">
+    <div class="container">
+        <p class="kicker reveal">안녕하세요, 저는</p>
+        <h1 class="name reveal">Nergis 예요.</h1>
+        <h2 class="tagline reveal">
+            <span class="tagline-prefix">&nbsp;</span><span
+                class="typed"
+                aria-live="polite"></span><span class="caret">_</span>
+        </h2>
+        <p class="lede reveal">
+            작지만 쓸모 있는 도구를 만들고, 틈틈이 오픈소스로 공개하는
+            개발자에요.
+            <span class="hl">깔끔한 코드</span>와 <span class="hl"
+                >빠른 피드백 흐름</span
+            >, 실제로 필요한 프로젝트를 만드는 데 관심이 많아요.
+        </p>
+        <div class="actions reveal">
+            <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+            <a href="#contact" class="btn btn-ghost" lang="en">contact →</a>
+        </div>
+    </div>
+    <script is:inline define:vars={{ phrases }}>
+        const target = document.querySelector(".typed");
+        if (target) {
+            let phraseIdx = 0;
+            let charIdx = 0;
+            let deleting = false;
+            const type = () => {
+                const word = phrases[phraseIdx];
+                if (!deleting) {
+                    charIdx++;
+                    target.textContent = word.slice(0, charIdx);
+                    if (charIdx === word.length) {
+                        deleting = true;
+                        setTimeout(type, 1800);
+                        return;
+                    }
+                    setTimeout(type, 70 + Math.random() * 60);
+                } else {
+                    charIdx--;
+                    target.textContent = word.slice(0, charIdx);
+                    if (charIdx === 0) {
+                        deleting = false;
+                        phraseIdx = (phraseIdx + 1) % phrases.length;
+                        setTimeout(type, 350);
+                        return;
+                    }
+                    setTimeout(type, 35);
+                }
+            };
+            type();
+        }
+    </script>
+</section>
+
+<style>
+    .hero {
+        padding: 140px 0 100px;
+        min-height: 88vh;
+        display: flex;
+        align-items: center;
+    }
+    .kicker {
+        color: var(--text-muted);
+        font-size: 14px;
+        margin-bottom: 18px;
+        letter-spacing: 0.02em;
+    }
+    .name {
+        font-size: clamp(48px, 9vw, 88px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: var(--text);
+        margin-bottom: 14px;
+    }
+    .tagline {
+        font-size: clamp(28px, 5.5vw, 52px);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        color: var(--accent-soft);
+        margin-bottom: 28px;
+        min-height: 1.1em;
+    }
+    .tagline-prefix {
+        color: var(--text-dim);
+    }
+    .caret {
+        display: inline-block;
+        color: var(--text);
+        font-weight: 400;
+        animation: blink 1s steps(1) infinite;
+        margin-left: 2px;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+    .lede {
+        max-width: 580px;
+        color: var(--text-muted);
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 36px;
+    }
+    .hl {
+        color: var(--text);
+    }
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+        font-weight: 500;
+        transition: all var(--transition);
+        border: 1px solid transparent;
+    }
+    .btn-primary {
+        background: var(--text);
+        color: var(--bg);
+    }
+    .btn-primary:hover {
+        background: #fff;
+        transform: translateY(-1px);
+    }
+    .btn-ghost {
+        background: transparent;
+        border-color: var(--border-strong);
+        color: var(--text);
+    }
+    .btn-ghost:hover {
+        border-color: var(--text);
+    }
+    @media (max-width: 720px) {
+        .hero {
+            padding: 80px 0 60px;
+            min-height: auto;
+        }
+    }
+</style>

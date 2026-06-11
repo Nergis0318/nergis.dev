@@ -1,0 +1,140 @@
+---
+const socials = [
+    {
+        label: "GitHub",
+        handle: "@Nergis0318",
+        href: "https://github.com/Nergis0318",
+    },
+    { label: "Email", handle: "me@nergis.dev", href: "mailto:me@nergis.dev" },
+    {
+        label: "Telegram",
+        handle: "@Dev_Nergis",
+        href: "https://t.me/Dev_Nergis",
+    },
+];
+const mailto = "mailto:me@nergis.dev";
+---
+
+<section class="section" id="contact">
+    <div class="container narrow">
+        <h2 class="section-title reveal">연락하기</h2>
+        <p class="big reveal">
+            메일함은 항상 열려 있어요. 궁금한 점, 같이 하면 좋을 프로젝트, 혹은
+            그냥 인사라도 편하게 보내 주세요. 가능한 한 빠르게 답장할게요.
+        </p>
+        <a
+            class="cta reveal"
+            href={mailto}
+            style="font-family: var(--font-sans);">인사 보내기 →</a
+        >
+
+        <ul class="socials reveal">
+            {
+                socials.map((s) => (
+                    <li>
+                        <a href={s.href}>
+                            <span class="label">{s.label}</span>
+                            <span class="handle">{s.handle}</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-inner">
+        <span lang="en">© 2026 Nergis</span>
+        <span>Astro로 만들었어요 · 조용한 곳에서 호스팅 중</span>
+    </div>
+</footer>
+
+<style>
+    .narrow {
+        max-width: 720px;
+    }
+    .big {
+        font-size: clamp(20px, 3vw, 26px);
+        color: var(--text);
+        line-height: 1.5;
+        margin-bottom: 36px;
+        font-weight: 400;
+    }
+    .cta {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        padding: 14px 28px;
+        border: 1px solid var(--text);
+        border-radius: var(--radius-sm);
+        color: var(--text);
+        margin-bottom: 80px;
+        transition: all var(--transition);
+    }
+    .cta:hover {
+        background: var(--text);
+        color: var(--bg);
+        transform: translateY(-1px);
+    }
+    .socials {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--border);
+    }
+    .socials li {
+        border-bottom: 1px solid var(--border);
+    }
+    .socials a {
+        display: grid;
+        grid-template-columns: 140px 1fr 24px;
+        align-items: center;
+        padding: 18px 4px;
+        color: var(--text-muted);
+        transition:
+            color var(--transition),
+            padding var(--transition);
+    }
+    .socials a:hover {
+        color: var(--text);
+        padding-left: 12px;
+    }
+    .label {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text);
+    }
+    .handle {
+        font-size: 14px;
+    }
+    .arrow {
+        text-align: right;
+        color: var(--text-dim);
+    }
+    .socials a:hover .arrow {
+        color: var(--text);
+    }
+    footer {
+        border-top: 1px solid var(--border);
+        padding: 24px 0;
+        margin-top: 60px;
+    }
+    .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-dim);
+    }
+    @media (max-width: 540px) {
+        .socials a {
+            grid-template-columns: 100px 1fr 20px;
+        }
+        .footer-inner {
+            flex-direction: column;
+            gap: 6px;
+        }
+    }
+</style>
